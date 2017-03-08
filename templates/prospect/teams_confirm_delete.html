@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block head %}
+<title>Update Team</title>
+{% endblock %}
+{% block body %}<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Update Team</h1>
+            <form action="" method="post">{% csrf_token %}
+                <p>Are you sure you want to delete "{{ object }}"?</p>
+                <input class="btn" type="submit" value="Confirm" />
+            </form>
+        </div>
+    </div>
+{% endblock %}

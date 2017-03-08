@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block head %}
+<title>Update Team</title>
+{% endblock %}
+{% block body %}<div class="container">
+    <div class="row">
+        <div class="container-fluid">
+            <h1>Update Team</h1>
+            <form action="" method="post">{% csrf_token %}
+                <div class="form-group">
+                    <label class="form-label" for="id_name">Name:</label>
+                    <input class="form-control" id="id_name" maxlength="256" name="name" type="text" value="{{ form.name.value }}" required />
+
+                    <label class="form-label" for="id_slogan">Slogan:</label>
+                    <input class="form-control" id="id_slogan" maxlength="2048" name="slogan" type="text" value="{{ form.slogan.value }}" />
+
+                    <label class="form-label" for="id_user1">User1:</label>
+                    <input class="form-control" id="id_user1" maxlength="100" name="user1" type="text" value="{{ form.user1.value }}"  />
+
+                    <label class="form-label" for="id_user2">User2:</label>
+                    <input class="form-control" id="id_user2" maxlength="100" name="user2" type="text" value="{{ form.user2.value }}"  />
+
+                    <label class="form-label" for="id_user3">User3:</label>
+                    <input class="form-control" id="id_user3" maxlength="100" name="user3" type="text" value="{{ form.user3.value }}"  />
+                </div>
+                <a href="{% url 'ctf-admin' %}" class="btn">Cancel</a>
+                <input class="btn btn-borrower" type="submit" value="Update Team" />
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block head %}
+<title>Update Profile</title>
+{% endblock %}
+{% block body %}
+<!-- Activate the My Profile Link Here -->
+<script>
+$(document).ready(function () {
+        $(".nav li").removeClass("active");//this will remove the active class from
+                                           //previously active menu item
+        $('#profile').addClass('active');
+    });
+</script>
+<div class="container">
+    <div class="row">
+        <div class="container-fluid">
+            <h1>Profile Update Success!</h1>
+        </div>
+    </div>
+</div>
+{% endblock %}

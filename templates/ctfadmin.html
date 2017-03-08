@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block body %}
+<!-- Activate the Administration Link Here -->
+<script>
+$(document).ready(function () {
+        $(".nav li").removeClass("active");//this will remove the active class from
+                                           //previously active menu item
+        $('#admin').addClass('active');
+    });
+</script>
+    <div class="">
+    <div class="row">
+    <h1>Teams</h1>
+        <div class="col-md-6">
+            <table class="table">
+                {% for teamobj in teams %}
+                    <tr>
+                        <td><b>{{ teamobj.name }}</b></td>
+                        <td><a class="btn btn-investor" href="{% url 'adminupdateteam' teamobj.id %}">Edit Team</a></td>
+                        <td><a class="btn" href="{% url 'delete-team' teamobj.id %}">Delete Team</a></td>
+                    </tr>
+                {% empty %}
+                    No Users yet, lol?.
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="{% url 'create-team' %}" class="btn btn-borrower">Add Team</a>
+        </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% load staticfiles %}
+{% load hermes_extras %}
+<head>
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'admin/js/vendor/jquery/jquery.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <style>
+        .page-main {
+            min-height: 800px;
+        }
+        .list-circles > li > .list-circles-text {
+            font-size: 15px;
+            color: inherit;
+            text-transform: none;
+            vertical-align: top;
+            font-weight: normal;
+            max-width: 85%;
+            padding-top: 5px;
+        }
+    </style>
+</head>
+{% block nav %}
+    <div class="page-header">
+        <div class="clearfix">
+            <div class="pull-left">
+                <img src="#" width="140" class="padding-top-10"/> <!--logo here -->
+            </div>
+            <div class="padding-top-20">
+                {% if user.is_authenticated %}
+                    <div class="pull-right"><a class="btn margin-left-30" href="{% url 'logout' %}?next={% url 'about' %}">Logout</a></div>
+                {% else %}
+                    <a class="pull-right btn" id="entryExit" href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="padding-top-10">
+            <ul class="nav nav-horizontal nav-separator nav-primary pull-left" role="tablist">
+                <li id="about"><a href="{% url 'about' %}">How to Play</a></li>
+                <li id="faq"><a href="{% url 'faq' %}">About</a></li>
+                <li id="profile"><a href="{% url 'updateprofile' %}">My CTF Profile</a></li>
+                <li id="teams"><a href="{% url 'list-teams' %}">Wager on Teams</a></li>
+                <li id="results"><a href="{% url 'results' %}">CTF Results</a></li>
+                {% if user.is_staff %}
+                <li id="admin"><a href="{% url 'ctf-admin' %}">Administration</a></li>
+                {% endif %}
+            </ul>
+            {% if user.is_authenticated %}
+                <div class="pull-right h4 padding-top-5">Wallet Balance: &nbsp;<a href="{% url 'wallet' %}"><span class="bold"><u>${{ balance|add_commas }}</u></span></a></div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+<body>
+<div class="page-main">
+    <div class="content-padding">
+        {% block body %}
+        {% endblock %}
+    </div>
+</div>
+<div class="page-footer">
+    <p class="small"></p>
+</div>
+</body>
+

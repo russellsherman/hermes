@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block body %}
+<!-- Activate the Teams Link Here -->
+  <script>
+  $(document).ready(function () {
+        $(".nav li").removeClass("active");//this will remove the active class from
+                                           //previously active menu item
+        $('#results').addClass('active');
+  });
+  </script>
+  <h1>Results</h1>
+  <h3>Results Here</h3>
+<br>
+    <table class="table table-left">
+      <thead class="bg-background-3">
+        <tr>
+          <th><strong>Username</strong></th>
+          <th><strong>Bet Amount</strong></th>
+          <th><strong>Winning Team Odds</strong></th>
+          <th><strong>Winnings</strong></th>
+        </tr>
+      </thead>
+      <!-- Temporarily disabled so that we can show static content
+        {% for bet in betting_individual_results %}
+      <tbody>
+        <tr>
+          <td style="max-width: 200px;"><strong>{{ bet.user__username }}</strong></td>
+          <td style="max-width: 300px;">{{ bet.total }}</td>
+          <td>{{ odds|floatformat:2 }}</td>
+          <td>{{ bet.winnings|floatformat:2 }}</td>
+        </tr>
+      </tbody>
+        {% empty %}
+        No teams have been created yet.
+        {% endfor %}
+        -->
+{% endblock %}

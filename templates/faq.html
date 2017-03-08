@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+<!-- Activate the How it Works Link Here -->
+<script>
+$(document).ready(function () {
+        $(".nav li").removeClass("active");//this will remove the active class from
+                                           //previously active menu item
+        $('#faq').addClass('active');
+    });
+</script>
+    <h1>About</h1>
+    <h3>What is Hermes?</h3>
+    <div class="padding-left-10">
+        <p class="large">Hermes is a CTF prospecting platform.</p>
+    </div>
+{% endblock %}

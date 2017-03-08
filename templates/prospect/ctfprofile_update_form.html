@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block head %}
+<title>Update Profile</title>
+{% endblock %}
+{% block body %}
+<!-- Activate the My Profile Link Here -->
+<script>
+$(document).ready(function () {
+        $(".nav li").removeClass("active");//this will remove the active class from
+                                           //previously active menu item
+        $('#profile').addClass('active');
+    });
+</script>
+<h1>Update Profile</h1>
+<p class="large">Are you participating in the CTF game?  If so, you should fill out the following information ahead of the game.</p>
+<br>
+<form class="form-grid" action="{% url 'updateprofile' %}" method="post">{% csrf_token %}
+    <div class="form-group">
+        <label class="form-label bold col-sm-3" for="id_ctfcount">CTF Count History:</label>
+        <div class="col-sm-6">
+            <input class="form-control" id="id_ctfcount" name="ctfcount" type="number" value="{{ form.ctfcount.value }}" required />
+            <div class="padding-top-2 padding-bottom-15">{{form.ctfcount.help_text}}</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="form-label bold col-sm-3" for="id_confidence">Confidence Level:</label>
+        <div class="col-sm-6">
+            <input class="form-control" id="id_confidence" maxlength="2048" name="confidence" type="text" value="{{ form.confidence.value }}" required />
+            <div class="padding-top-2 padding-bottom-15">{{form.confidence.help_text}}</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="form-label bold col-sm-3" for="id_skills">Skills:</label>
+        <div class="col-sm-6">
+            <input class="form-control" id="id_skills" maxlength="2048" name="skills" type="text" value="{{ form.skills.value }}" required />
+            <div class="padding-top-2 padding-bottom-15">{{form.skills.help_text}}</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="form-label bold col-sm-3" for="id_training">Training Taken:</label>
+        <div class="col-sm-6">
+            <input class="form-control" id="id_training" maxlength="2048" name="training" type="text" value="{{ form.training.value }}" required />
+            <div class="padding-top-2 padding-bottom-15">{{form.training.help_text}}</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6 col-sm-offset-3 padding-top-20">
+            <input class="btn" type="submit" value="Update" />
+        </div>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block body %}
+  <h1>Wallet History</h1>
+<br>
+    <table class="table table-left">
+      <thead class="bg-background-3">
+        <tr>
+            <th><strong>Team Name</strong></th>
+            <th><strong>Odds</strong></th>
+            <th><strong>Wager Amount</strong></th>
+            <th><strong>Stand To Win</strong></th>
+        </tr>
+      </thead>
+        {% for wager in wager_list %}
+          <tbody>
+            <tr>
+                <td><strong>{{ wager.team }}</strong></td>
+                <td>{{ wager.odds|floatformat:3 }}</td>
+                <td><span class="bold">${{ wager.amount }}</span></td>
+                <td><span class="bold">${{ wager.stand_to_win|floatformat:2 }}</span></td>
+            </tr>
+          </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}

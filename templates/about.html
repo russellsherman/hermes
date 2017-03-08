@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block body %}
+<!-- Activate the How it Works Link Here -->
+<script>
+$(document).ready(function () {
+        $(".nav li").removeClass("active");//this will remove the active class from
+                                           //previously active menu item
+        $('#about').addClass('active');
+    });
+</script>
+<div class="">
+    <ul class="list-circles">
+        <li class="active">
+            <span class="icon icon-step-active">1</span>
+            <span class="list-circles-text">Login using your username and password.</span>
+        </li>
+        <li class="active">
+            <span class="icon icon-step-active">2</span>
+            <span class="list-circles-text">(Optional) Fill out your CTF profile if you’re playing in the CTF.</span>
+        </li>
+        <li class="active">
+            <span class="icon icon-step-active">3</span>
+            <span class="list-circles-text">Look through the teams page to find the team you think will win.</span>
+        </li>
+        <li class="active">
+            <span class="icon icon-step-active">4</span>
+            <span class="list-circles-text">Place your wager!</span>
+        </li>
+    </ul>
+</div>
+{% endblock %}
