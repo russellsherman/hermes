@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block body %}
+<!-- Activate the Teams Link Here -->
+  <script>
+  $(document).ready(function () {
+        $(".nav li").removeClass("active");//this will remove the active class from
+                                           //previously active menu item
+        $('#teams').addClass('active');
+  });
+  </script>
+  <h1>Teams</h1>
+  <!-- Temporarily disabled code below
+  <h3>Have you registered your team?</h3>
+  -->
+
+  <h3>Who's Going to Win?</h3>
+<br>
+    <table class="table table-left">
+      <thead class="bg-background-3">
+        <tr>
+          <th><strong>Team Name</strong></th>
+          <th><strong>Team Slogan</strong></th>
+          <th><strong>Team Members</strong></th>
+          <th><strong>Odds</strong></th>
+            {% if user.is_authenticated %}
+          <th><strong>Action</strong></th>
+            {% endif %}
+        </tr>
+      </thead>
+        {% for team in teams_list %}
+      <tbody>
+        <tr>
+          {% if team.name %}
+          <td style="max-width: 200px;"><strong>{{ team.name }}</strong></td>
+          {% else %}
+          <td>Team Name Undefined</td>
+          {% endif %}
+
+          <td style="max-width: 300px;">{{ team.slogan }}</td>
+
+          <td>
+          {% if team.user1 %}
+            <a class="text-investor-link" href="{% url 'view-profile' team.user1 %}">{{ team.user1 }}</a><br/>
+          {% endif %}
+
+          {% if team.user2 %}
+            <a class="text-investor-link" href="{% url 'view-profile' team.user2 %}">{{ team.user2 }}</a><br/>
+          {% endif %}
+
+          {% if team.user3 %}
+            <a class="text-investor-link" href="{% url 'view-profile' team.user3 %}">{{ team.user3 }}</a><br/>
+          {% endif %}
+          </td>
+          <td>
+            {% if team.odds == -1.0 %}
+                <p>No bets.</p>
+            {% else %}
+                {{ team.odds|floatformat:3 }}
+            {% endif %}
+          </td>
+          {% if user.is_authenticated %}
+              <td>
+                <a class="btn btn-little" href="{% url 'place-bet' team.id %}">Place Bet</a>
+              </td>
+          {% endif %}
+        </tr>
+      </tbody>
+        {% empty %}
+        No teams have been created yet.
+        {% endfor %}
+    </table>
+{% endblock %}
